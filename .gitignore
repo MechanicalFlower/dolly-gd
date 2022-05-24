@@ -19,11 +19,3 @@ target/
 
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
-
-# Slippery-specific ignores
-bin/
-lib/
-
-# Nix-specific ignores
-result
-result-*
