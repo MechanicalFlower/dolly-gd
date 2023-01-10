@@ -15,7 +15,9 @@ pub struct Position {
 impl Position {
     ///
     pub fn new(_owner: TRef<Resource>) -> Self {
-        Self { position: Vector3::ZERO }
+        Self {
+            position: Vector3::ZERO,
+        }
     }
 }
 

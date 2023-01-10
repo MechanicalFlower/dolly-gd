@@ -1,437 +1,51 @@
-[tasks.build-release]
-script_runner = "@shell"
-script = '''
-# cargo make build-aarch64-linux-android-release
-# cargo make build-armv7-linux-androideabi-release
-# cargo make build-i686-linux-android-release
-# cargo make build-x86_64-linux-android-release
-# cargo make build-i686-unknown-linux-gnu-release
-cargo make build-x86_64-unknown-linux-gnu-release
-# cargo make build-x86_64-apple-darwin-release
-# cargo make build-aarch64-apple-ios-release
-# cargo make build-i686-pc-windows-gnu-release
-# cargo make build-x86_64-pc-windows-gnu-release
-# cargo make build-i686-pc-windows-msvc-release
-# cargo make build-x86_64-pc-windows-msvc-release
-# cargo make build-wasm32-unknown-emscripten-release
-'''
-
-[tasks.ps1-build-aarch64-linux-android-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target aarch64-linux-android --release
-mkdir -p ./lib/aarch64-linux-android
-mv ./target/aarch64-linux-android/release/*.so ./lib/aarch64-linux-android
-'''
-
-[tasks.sh-build-aarch64-linux-android-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target aarch64-linux-android --release
-if [[ -f ./lib/aarch64-linux-android/*.so ]]; then
-  rm ./lib/aarch64-linux-android/*.so
-fi
-mkdir -p ./lib/aarch64-linux-android
-mv ./target/aarch64-linux-android/release/*.so ./lib/aarch64-linux-android
-'''
-
-[tasks.build-aarch64-linux-android-release]
-run_task = [
-    { name = "ps1-build-aarch64-linux-android-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-aarch64-linux-android-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-armv7-linux-androideabi-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target armv7-linux-androideabi --release
-mkdir -p ./lib/armv7-linux-androideabi
-mv ./target/armv7-linux-androideabi/release/*.so ./lib/armv7-linux-androideabi
-'''
-
-[tasks.sh-build-armv7-linux-androideabi-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target armv7-linux-androideabi --release
-if [[ -f ./lib/armv7-linux-androideabi/*.so ]]; then
-  rm ./lib/armv7-linux-androideabi/*.so
-fi
-mkdir -p ./lib/armv7-linux-androideabi
-mv ./target/armv7-linux-androideabi/release/*.so ./lib/armv7-linux-androideabi
-'''
-
-[tasks.build-armv7-linux-androideabi-release]
-run_task = [
-    { name = "ps1-build-armv7-linux-androideabi-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-armv7-linux-androideabi-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-i686-linux-android-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-linux-android --release
-mkdir -p ./lib/i686-linux-android
-mv ./target/i686-linux-android/release/*.so ./lib/i686-linux-android
-'''
-
-[tasks.sh-build-i686-linux-android-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-linux-android --release
-if [[ -f ./lib/i686-linux-android/*.so ]]; then
-  rm ./lib/i686-linux-android/*.so
-fi
-mkdir -p ./lib/i686-linux-android
-mv ./target/i686-linux-android/release/*.so ./lib/i686-linux-android
-'''
-
-[tasks.build-i686-linux-android-release]
-run_task = [
-    { name = "ps1-build-i686-linux-android-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-i686-linux-android-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-x86_64-linux-android-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-linux-android --release
-mkdir -p ./lib/x86_64-linux-android
-mv ./target/x86_64-linux-android/release/*.so ./lib/x86_64-linux-android
-'''
-
-[tasks.sh-build-x86_64-linux-android-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-linux-android --release
-if [[ -f ./lib/x86_64-linux-android/*.so ]]; then
-  rm ./lib/x86_64-linux-android/*.so
-fi
-mkdir -p ./lib/x86_64-linux-android
-mv ./target/x86_64-linux-android/release/*.so ./lib/x86_64-linux-android
-'''
-
-[tasks.build-x86_64-linux-android-release]
-run_task = [
-    { name = "ps1-build-x86_64-linux-android-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-x86_64-linux-android-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-i686-unknown-linux-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-unknown-linux-gnu --release
-mkdir -p ./lib/i686-unknown-linux-gnu
-mv ./target/i686-unknown-linux-gnu/release/*.so ./lib/i686-unknown-linux-gnu
-'''
-
-[tasks.sh-build-i686-unknown-linux-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-unknown-linux-gnu --release
-if [[ -f ./lib/i686-unknown-linux-gnu/*.so ]]; then
-  rm ./lib/i686-unknown-linux-gnu/*.so
-fi
-mkdir -p ./lib/i686-unknown-linux-gnu
-mv ./target/i686-unknown-linux-gnu/release/*.so ./lib/i686-unknown-linux-gnu
-'''
-
-[tasks.build-i686-unknown-linux-gnu-release]
-run_task = [
-    { name = "ps1-build-i686-unknown-linux-gnu-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-i686-unknown-linux-gnu-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-x86_64-unknown-linux-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-unknown-linux-gnu --release
-mkdir -p ./lib/x86_64-unknown-linux-gnu
-mv ./target/x86_64-unknown-linux-gnu/release/*.so ./lib/x86_64-unknown-linux-gnu
-'''
-
-[tasks.sh-build-x86_64-unknown-linux-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-unknown-linux-gnu --release
-if [[ -f ./lib/x86_64-unknown-linux-gnu/*.so ]]; then
-  rm ./lib/x86_64-unknown-linux-gnu/*.so
-fi
-mkdir -p ./lib/x86_64-unknown-linux-gnu
-mv ./target/x86_64-unknown-linux-gnu/release/*.so ./lib/x86_64-unknown-linux-gnu
-'''
-
-[tasks.build-x86_64-unknown-linux-gnu-release]
-run_task = [
-    { name = "ps1-build-x86_64-unknown-linux-gnu-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-x86_64-unknown-linux-gnu-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-x86_64-apple-darwin-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-apple-darwin --release
-mkdir -p ./lib/x86_64-apple-darwin
-mv ./target/x86_64-apple-darwin/release/*.dylib ./lib/x86_64-apple-darwin
-'''
-
-[tasks.sh-build-x86_64-apple-darwin-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-apple-darwin --release
-if [[ -f ./lib/x86_64-apple-darwin/*.dylib ]]; then
-  rm ./lib/x86_64-apple-darwin/*.dylib
-fi
-mkdir -p ./lib/x86_64-apple-darwin
-mv ./target/x86_64-apple-darwin/release/*.dylib ./lib/x86_64-apple-darwin
-'''
-
-[tasks.build-x86_64-apple-darwin-release]
-run_task = [
-    { name = "ps1-build-x86_64-apple-darwin-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-x86_64-apple-darwin-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-aarch64-apple-ios-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target aarch64-apple-ios --release
-mkdir -p ./lib/aarch64-apple-ios
-mv ./target/aarch64-apple-ios/release/*.a ./lib/aarch64-apple-ios
-'''
-
-[tasks.sh-build-aarch64-apple-ios-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target aarch64-apple-ios --release
-if [[ -f ./lib/aarch64-apple-ios/*.a ]]; then
-  rm ./lib/aarch64-apple-ios/*.a
-fi
-mkdir -p ./lib/aarch64-apple-ios
-mv ./target/aarch64-apple-ios/release/*.a ./lib/aarch64-apple-ios
-'''
-
-[tasks.build-aarch64-apple-ios-release]
-run_task = [
-    { name = "ps1-build-aarch64-apple-ios-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-aarch64-apple-ios-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-i686-pc-windows-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-pc-windows-gnu --release
-mkdir -p ./lib/i686-pc-windows-gnu
-mv ./target/i686-pc-windows-gnu/release/*.dll ./lib/i686-pc-windows-gnu
-'''
-
-[tasks.sh-build-i686-pc-windows-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-pc-windows-gnu --release
-if [[ -f ./lib/i686-pc-windows-gnu/*.dll ]]; then
-  rm ./lib/i686-pc-windows-gnu/*.dll
-fi
-mkdir -p ./lib/i686-pc-windows-gnu
-mv ./target/i686-pc-windows-gnu/release/*.dll ./lib/i686-pc-windows-gnu
-'''
-
-[tasks.build-i686-pc-windows-gnu-release]
-run_task = [
-    { name = "ps1-build-i686-pc-windows-gnu-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-i686-pc-windows-gnu-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-x86_64-pc-windows-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-pc-windows-gnu --release
-mkdir -p ./lib/x86_64-pc-windows-gnu
-mv ./target/x86_64-pc-windows-gnu/release/*.dll ./lib/x86_64-pc-windows-gnu
-'''
-
-[tasks.sh-build-x86_64-pc-windows-gnu-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-pc-windows-gnu --release
-if [[ -f ./lib/x86_64-pc-windows-gnu/*.dll ]]; then
-  rm ./lib/x86_64-pc-windows-gnu/*.dll
-fi
-mkdir -p ./lib/x86_64-pc-windows-gnu
-mv ./target/x86_64-pc-windows-gnu/release/*.dll ./lib/x86_64-pc-windows-gnu
-'''
-
-[tasks.build-x86_64-pc-windows-gnu-release]
-run_task = [
-    { name = "ps1-build-x86_64-pc-windows-gnu-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-x86_64-pc-windows-gnu-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-i686-pc-windows-msvc-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-pc-windows-msvc --release
-mkdir -p ./lib/i686-pc-windows-msvc
-mv ./target/i686-pc-windows-msvc/release/*.dll ./lib/i686-pc-windows-msvc
-'''
-
-[tasks.sh-build-i686-pc-windows-msvc-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target i686-pc-windows-msvc --release
-if [[ -f ./lib/i686-pc-windows-msvc/*.dll ]]; then
-  rm ./lib/i686-pc-windows-msvc/*.dll
-fi
-mkdir -p ./lib/i686-pc-windows-msvc
-mv ./target/i686-pc-windows-msvc/release/*.dll ./lib/i686-pc-windows-msvc
-'''
-
-[tasks.build-i686-pc-windows-msvc-release]
-run_task = [
-    { name = "ps1-build-i686-pc-windows-msvc-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-i686-pc-windows-msvc-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-x86_64-pc-windows-msvc-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-pc-windows-msvc --release
-mkdir -p ./lib/x86_64-pc-windows-msvc
-mv ./target/x86_64-pc-windows-msvc/release/*.dll ./lib/x86_64-pc-windows-msvc
-'''
-
-[tasks.sh-build-x86_64-pc-windows-msvc-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target x86_64-pc-windows-msvc --release
-if [[ -f ./lib/x86_64-pc-windows-msvc/*.dll ]]; then
-  rm ./lib/x86_64-pc-windows-msvc/*.dll
-fi
-mkdir -p ./lib/x86_64-pc-windows-msvc
-mv ./target/x86_64-pc-windows-msvc/release/*.dll ./lib/x86_64-pc-windows-msvc
-'''
-
-[tasks.build-x86_64-pc-windows-msvc-release]
-run_task = [
-    { name = "ps1-build-x86_64-pc-windows-msvc-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-x86_64-pc-windows-msvc-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.ps1-build-wasm32-unknown-emscripten-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target wasm32-unknown-emscripten --release
-mkdir -p ./lib/wasm32-unknown-emscripten
-mv ./target/wasm32-unknown-emscripten/release/*.wasm ./lib/wasm32-unknown-emscripten
-'''
-
-[tasks.sh-build-wasm32-unknown-emscripten-release]
-dependencies = ["clean"]
-script_runner = "@shell"
-script = '''
-cargo build --target wasm32-unknown-emscripten --release
-if [[ -f ./lib/wasm32-unknown-emscripten/*.wasm ]]; then
-  rm ./lib/wasm32-unknown-emscripten/*.wasm
-fi
-mkdir -p ./lib/wasm32-unknown-emscripten
-mv ./target/wasm32-unknown-emscripten/release/*.wasm ./lib/wasm32-unknown-emscripten
-'''
-
-[tasks.build-wasm32-unknown-emscripten-release]
-run_task = [
-    { name = "ps1-build-wasm32-unknown-emscripten-release", condition = { platforms = ["windows"] } },
-    { name = "sh-build-wasm32-unknown-emscripten-release", condition = { platforms = ["linux", "mac"] } }
-]
-
-[tasks.audit]
-command = "cargo"
-args = ["audit"]
-
-[tasks.check]
-command = "cargo"
-args = ["check"]
-dependencies = ["clean"]
-
-[tasks.clean]
-command = "cargo"
-args = ["clean"]
-
-[tasks.create-debug-keystore]
-script_runner = "@shell"
-script = '''
-keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore slippery.debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999 -deststoretype pkcs12
-mv -b *.keystore ..
-'''
-
-[tasks.create-release-keystore]
-script_runner = "@shell"
-script = '''
-keytool -keyalg RSA -genkeypair -alias slippery -keypass ${@} -keystore slippery.release.keystore -storepass ${@} -dname "CN=slippery,O=Android,C=US" -validity 10000 -deststoretype pkcs12
-mv -b *.keystore ..
-'''
-
-[tasks.doc]
-command = "cargo"
-args = ["doc", "--no-deps", "--open", "-v"]
-dependencies = ["clean"]
-
-[tasks.run-for-linux]
-# dependencies = ["build-i686-unknown-linux-gnu-debug"]
-dependencies = ["build-x86_64-unknown-linux-gnu-debug"]
-run_task = "run-godot"
-
-[tasks.run-for-macos]
-dependencies = ["build-x86_64-apple-darwin-debug"]
-run_task = "run-godot"
-
-[tasks.run-for-windows]
-# dependencies = ["build-i686-pc-windows-gnu-debug"]
-# dependencies = ["build-i686-pc-windows-msvc-debug"]
-# dependencies = ["build-x86_64-pc-windows-gnu-debug"]
-dependencies = ["build-x86_64-pc-windows-msvc-debug"]
-run_task = "run-godot"
-
-[tasks.run-godot]
-script_runner = "@shell"
-script = '''
-godot -d
-'''
-
-[tasks.run]
-run_task = [
-    { name = "run-for-windows", condition = { platforms = ["windows"] } },
-    { name = "run-for-linux", condition = { platforms = ["linux"] } },
-    { name = "run-for-macos", condition = { platforms = ["mac"] } }
-]
-
-[tasks.test]
-command = "cargo"
-args = ["test"]
-dependencies = ["clean"]
-
 [env]
-CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
+CARGO_MAKE_RUST_TARGET_TRIPLE = { value = "${BUILD_TARGET}", condition = { env_set = ["BUILD_TARGET"] } }
+
+#
+# Main commands
+#
+
+[tasks.build-release]
+private = false
+dependencies = ["build-lib-release"]
+
+[tasks.build-all-release]
+private = false
+script_runner = "@shell"
+script = '''
+cargo make --env BUILD_TARGET=aarch64-linux-android -- build-release
+cargo make --env BUILD_TARGET=armv7-linux-androideabi -- build-release
+cargo make --env BUILD_TARGET=i686-linux-android -- build-release
+cargo make --env BUILD_TARGET=x86_64-linux-android -- build-release
+cargo make --env BUILD_TARGET=i686-unknown-linux-gnu -- build-release
+cargo make --env BUILD_TARGET=x86_64-unknown-linux-gnu -- build-release
+cargo make --env BUILD_TARGET=x86_64-apple-darwin -- build-release
+cargo make --env BUILD_TARGET=aarch64-apple-ios -- build-release
+cargo make --env BUILD_TARGET=i686-pc-windows-msvc -- build-release
+cargo make --env BUILD_TARGET=x86_64-pc-windows-msvc -- build-release
+cargo make --env BUILD_TARGET=wasm32-unknown-emscripten -- build-release
+'''
+
+#
+# Release tasks
+#
+
+[tasks.build-crate-release]
+private = true
+script_runner = "@shell"
+script = '''
+cargo build --target $CARGO_MAKE_RUST_TARGET_TRIPLE --release
+'''
+
+[tasks.build-lib-release]
+private = true
+dependencies = ["build-crate-release"]
+script_runner = "@shell"
+script = '''
+if [[ -f ./lib/$CARGO_MAKE_RUST_TARGET_TRIPLE/*.so ]]; then
+  rm ./lib/$CARGO_MAKE_RUST_TARGET_TRIPLE/*.so
+fi
+
+mkdir -p ./lib/$CARGO_MAKE_RUST_TARGET_TRIPLE
+cp ./target/$CARGO_MAKE_RUST_TARGET_TRIPLE/release/*.so ./lib/$CARGO_MAKE_RUST_TARGET_TRIPLE
+'''

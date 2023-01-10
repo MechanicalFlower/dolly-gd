@@ -2,13 +2,8 @@ name: Check and Lint
 
 on:
   pull_request:
-    paths:
-      - '**.rs'
-      - '**.toml'
   push:
-    paths:
-      - '**.rs'
-      - '**.toml'
+  workflow_dispatch:
 
 jobs:
   # Ensure that the project could be successfully compiled

@@ -7,4 +7,4 @@ resource_name = "DollyCamera"
 class_name = "DollyCamera"
 library = ExtResource( 1 )
 script_class_name = "DollyCamera"
-script_class_icon_path = "res://addons/dolly-gd/icons/Camera3D.svg"
+script_class_icon_path = "res://addons/dolly-gd/icons/Object.svg"

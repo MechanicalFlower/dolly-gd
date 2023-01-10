@@ -16,7 +16,9 @@ pub struct Arm {
 impl Arm {
     ///
     pub fn new(_owner: TRef<Resource>) -> Self {
-        Self { offset: Vector3::ZERO }
+        Self {
+            offset: Vector3::ZERO,
+        }
     }
 }
 

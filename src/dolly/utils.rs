@@ -56,7 +56,7 @@ impl<T: Interpolate + Copy + std::fmt::Debug> ExpSmoothed<T> {
 impl<T: FromVariant + Interpolate + Copy + std::fmt::Debug> FromVariant for ExpSmoothed<T> {
     #[inline]
     fn from_variant(variant: &Variant) -> Result<Self, FromVariantError> {
-        Option::<T>::from_variant(variant).map(|res| ExpSmoothed::<T>(res)).or_else(|err| Err(err))
+        Option::<T>::from_variant(variant).map(|res| ExpSmoothed::<T>(res))
     }
 }
 

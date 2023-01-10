@@ -14,7 +14,9 @@ pub struct Rotation {
 #[methods]
 impl Rotation {
     pub fn new(_owner: TRef<Resource>) -> Self {
-        Self { rotation: Basis::IDENTITY }
+        Self {
+            rotation: Basis::IDENTITY,
+        }
     }
 }
 

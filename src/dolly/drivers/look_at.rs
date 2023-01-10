@@ -55,7 +55,7 @@ impl RigDriver for LookAt {
                 delta_time_seconds: params.delta_time_seconds,
             },
         );
-        
+
         params.parent.looking_at(target, Vector3::UP)
     }
 }

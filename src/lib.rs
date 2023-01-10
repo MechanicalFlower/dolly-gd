@@ -1,8 +1,8 @@
 use gdnative::prelude::*;
 
-mod plugin;
 mod camera;
 mod dolly;
+mod plugin;
 
 fn init(handle: InitHandle) {
     handle.add_tool_class::<plugin::DollyPlugin>();

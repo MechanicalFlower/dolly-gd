@@ -4,7 +4,6 @@ version = "0.1.0"
 authors = ["florianvazelle <ponythugflorian@gmail.com>"]
 edition = "2021"
 description = "Composable camera rigs for Godot Engine"
-rust-version = "1.56"
 license = "MIT"
 keywords = ["gamedev", "camera", "3d", "godot", "godot-rust"]
 categories = ["game-development"]
@@ -13,4 +12,8 @@ categories = ["game-development"]
 crate-type = ["cdylib"]
 
 [dependencies]
-gdnative = "0.10"
+gdnative = "0.11"
+
+[build-dependencies]
+askama = "0.11.1"
+regex = "1.7.0"
